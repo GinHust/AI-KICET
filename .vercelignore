@@ -1,0 +1,18 @@
+node_modules
+apps/api
+apps/web/node_modules
+apps/web/.next
+apps/web/.next-*
+packages/shared/node_modules
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+__pycache__
+.git
+tests
+playwright-report
+test-results
+scripts
+home image.png

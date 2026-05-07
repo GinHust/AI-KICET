@@ -1,7 +1,5 @@
 {
-  "rootDirectory": "apps/web",
+  "installCommand": "npm ci",
   "buildCommand": "cd apps/web && npm run build",
-  "installCommand": "npm install",
-  "outputDirectory": ".next",
-  "framework": "nextjs"
+  "outputDirectory": "apps/web/.next-kicetic-web"
 }

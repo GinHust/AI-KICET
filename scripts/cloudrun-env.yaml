@@ -1,0 +1,2 @@
+KICETIC_APP_ENV: production
+KICETIC_CORS_ORIGINS: '["https://kicetic.vercel.app","http://localhost:3000","http://127.0.0.1:8004","http://127.0.0.1:8005"]'

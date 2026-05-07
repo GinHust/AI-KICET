@@ -1,0 +1,19 @@
+{
+  "name": "@kicetic/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/contracts.ts",
+  "module": "./src/contracts.ts",
+  "types": "./src/contracts.ts",
+  "exports": {
+    ".": "./src/contracts.ts",
+    "./contracts": "./src/contracts.ts",
+    "./fixtures": "./src/fixtures.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  }
+}

@@ -1,0 +1,352 @@
+[
+  {
+    "question_id": "mpcvd-q001",
+    "axis": "substrate_nucleation",
+    "question": "Should we expand substrate materials before isolating seed pretreatment effects?",
+    "keywords": ["substrate", "seed", "pretreatment", "nucleation"],
+    "candidate_constraint_ids": ["mpcvd-substrate-boundary", "mpcvd-sample-history-control"]
+  },
+  {
+    "question_id": "mpcvd-q002",
+    "axis": "substrate_nucleation",
+    "question": "How can BEN and diamond nanoparticle seeding be compared without mixing nucleation density with growth kinetics?",
+    "keywords": ["BEN", "seeding", "nucleation density", "growth kinetics"],
+    "candidate_constraint_ids": ["mpcvd-bias-nucleation-separation", "mpcvd-substrate-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q003",
+    "axis": "substrate_nucleation",
+    "question": "When substrate roughness changes, what must be controlled before attributing film quality changes to methane ratio?",
+    "keywords": ["roughness", "film quality", "methane", "substrate"],
+    "candidate_constraint_ids": ["mpcvd-substrate-boundary", "mpcvd-control-variable-confounding", "mpcvd-methane-interpretation"]
+  },
+  {
+    "question_id": "mpcvd-q004",
+    "axis": "substrate_nucleation",
+    "question": "Can AFM probe substrate holders be treated as passive fixtures during MPCVD diamond growth experiments?",
+    "keywords": ["AFM", "substrate holder", "fixture", "MPCVD"],
+    "candidate_constraint_ids": ["mpcvd-substrate-holder-artifact"]
+  },
+  {
+    "question_id": "mpcvd-q005",
+    "axis": "substrate_nucleation",
+    "question": "How should prior cleaning and surface termination history be recorded before comparing nucleation outcomes?",
+    "keywords": ["cleaning", "surface termination", "history", "nucleation"],
+    "candidate_constraint_ids": ["mpcvd-sample-history-control", "mpcvd-substrate-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q006",
+    "axis": "substrate_nucleation",
+    "question": "What evidence is needed before claiming substrate type dominates over plasma chemistry in early diamond growth?",
+    "keywords": ["substrate type", "plasma chemistry", "early growth"],
+    "candidate_constraint_ids": ["mpcvd-control-variable-confounding", "mpcvd-substrate-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q007",
+    "axis": "substrate_nucleation",
+    "question": "Should nucleation density be optimized independently before using BO to tune full MPCVD recipes?",
+    "keywords": ["nucleation density", "BO", "recipe", "optimize"],
+    "candidate_constraint_ids": ["mpcvd-bo-safe-boundary", "mpcvd-substrate-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q008",
+    "axis": "plasma_chemistry",
+    "question": "How can CH3 radical availability be separated from ion bombardment effects in methane-rich plasma?",
+    "keywords": ["CH3", "radical", "ion bombardment", "methane", "plasma"],
+    "candidate_constraint_ids": ["mpcvd-control-variable-confounding", "mpcvd-methane-interpretation"]
+  },
+  {
+    "question_id": "mpcvd-q009",
+    "axis": "plasma_chemistry",
+    "question": "Can OES intensity trends be used directly as radical concentration without calibration?",
+    "keywords": ["OES", "intensity", "radical", "calibration"],
+    "candidate_constraint_ids": ["mpcvd-oes-calibration", "mpcvd-measurement-proxy"]
+  },
+  {
+    "question_id": "mpcvd-q010",
+    "axis": "plasma_chemistry",
+    "question": "What plasma diagnostics are needed before linking hydrogen dilution to defect suppression?",
+    "keywords": ["hydrogen", "dilution", "defect", "plasma diagnostics"],
+    "candidate_constraint_ids": ["mpcvd-hydrogen-etch-balance", "mpcvd-defect-origin-ambiguity"]
+  },
+  {
+    "question_id": "mpcvd-q011",
+    "axis": "plasma_chemistry",
+    "question": "How should plasma drift during long growth runs be distinguished from recipe parameter effects?",
+    "keywords": ["plasma drift", "long growth", "recipe", "parameter"],
+    "candidate_constraint_ids": ["mpcvd-time-dependent-drift", "mpcvd-control-variable-confounding"]
+  },
+  {
+    "question_id": "mpcvd-q012",
+    "axis": "plasma_chemistry",
+    "question": "When microwave power changes plasma density and substrate temperature together, how should causality be tested?",
+    "keywords": ["microwave power", "plasma density", "temperature", "causality"],
+    "candidate_constraint_ids": ["mpcvd-pressure-power-coupling", "mpcvd-temperature-nonindependent"]
+  },
+  {
+    "question_id": "mpcvd-q013",
+    "axis": "plasma_chemistry",
+    "question": "Can gas-phase model outputs be treated as surface growth mechanisms without surface validation?",
+    "keywords": ["gas-phase", "model", "surface", "growth mechanism"],
+    "candidate_constraint_ids": ["mpcvd-mechanism-validation-boundary", "mpcvd-measurement-proxy"]
+  },
+  {
+    "question_id": "mpcvd-q014",
+    "axis": "plasma_chemistry",
+    "question": "What constraints should be checked before adding oxygen-containing species to MPCVD diamond recipes?",
+    "keywords": ["oxygen", "species", "recipe", "plasma"],
+    "candidate_constraint_ids": ["mpcvd-pressure-window", "mpcvd-non-diamond-carbon-check"]
+  },
+  {
+    "question_id": "mpcvd-q015",
+    "axis": "temperature_pressure_power",
+    "question": "Is substrate temperature a sufficient control variable when pressure and power are changed simultaneously?",
+    "keywords": ["substrate temperature", "pressure", "power", "control variable"],
+    "candidate_constraint_ids": ["mpcvd-temperature-nonindependent", "mpcvd-pressure-power-coupling"]
+  },
+  {
+    "question_id": "mpcvd-q016",
+    "axis": "temperature_pressure_power",
+    "question": "How narrow should the stable plasma window be before comparing growth rate across pressure sweeps?",
+    "keywords": ["stable plasma", "pressure sweep", "growth rate"],
+    "candidate_constraint_ids": ["mpcvd-pressure-window", "mpcvd-pressure-power-coupling"]
+  },
+  {
+    "question_id": "mpcvd-q017",
+    "axis": "temperature_pressure_power",
+    "question": "What thermal gradient artifacts can appear when comparing center and edge growth on a substrate?",
+    "keywords": ["thermal gradient", "edge", "center", "substrate"],
+    "candidate_constraint_ids": ["mpcvd-thermal-gradient-artifact", "mpcvd-scaleup-edge-effect"]
+  },
+  {
+    "question_id": "mpcvd-q018",
+    "axis": "temperature_pressure_power",
+    "question": "Can microwave power be optimized before verifying mode stability with the chosen substrate holder?",
+    "keywords": ["microwave power", "mode stability", "substrate holder"],
+    "candidate_constraint_ids": ["mpcvd-substrate-holder-artifact", "mpcvd-pressure-window"]
+  },
+  {
+    "question_id": "mpcvd-q019",
+    "axis": "temperature_pressure_power",
+    "question": "How should pyrometer readings be interpreted when surface emissivity changes during diamond growth?",
+    "keywords": ["pyrometer", "emissivity", "surface", "temperature"],
+    "candidate_constraint_ids": ["mpcvd-measurement-proxy", "mpcvd-temperature-nonindependent"]
+  },
+  {
+    "question_id": "mpcvd-q020",
+    "axis": "temperature_pressure_power",
+    "question": "Which pressure-power combinations should be excluded before BO proposes aggressive recipe candidates?",
+    "keywords": ["pressure", "power", "BO", "aggressive", "recipe"],
+    "candidate_constraint_ids": ["mpcvd-bo-safe-boundary", "mpcvd-pressure-window"]
+  },
+  {
+    "question_id": "mpcvd-q021",
+    "axis": "methane_hydrogen_gas",
+    "question": "Should methane ratio be optimized before broadening substrate experiments?",
+    "keywords": ["methane ratio", "substrate", "optimize"],
+    "candidate_constraint_ids": ["mpcvd-methane-interpretation", "mpcvd-substrate-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q022",
+    "axis": "methane_hydrogen_gas",
+    "question": "How can increased growth rate from CH4 be separated from non-diamond carbon accumulation?",
+    "keywords": ["CH4", "growth rate", "non-diamond carbon"],
+    "candidate_constraint_ids": ["mpcvd-methane-interpretation", "mpcvd-non-diamond-carbon-check"]
+  },
+  {
+    "question_id": "mpcvd-q023",
+    "axis": "methane_hydrogen_gas",
+    "question": "What hydrogen flow evidence is needed before claiming improved etching selectivity?",
+    "keywords": ["hydrogen flow", "etching", "selectivity"],
+    "candidate_constraint_ids": ["mpcvd-hydrogen-etch-balance"]
+  },
+  {
+    "question_id": "mpcvd-q024",
+    "axis": "methane_hydrogen_gas",
+    "question": "When gas residence time changes, can methane ratio effects still be compared directly?",
+    "keywords": ["gas residence time", "methane ratio", "compare"],
+    "candidate_constraint_ids": ["mpcvd-control-variable-confounding", "mpcvd-methane-interpretation"]
+  },
+  {
+    "question_id": "mpcvd-q025",
+    "axis": "methane_hydrogen_gas",
+    "question": "What limits should be enforced before testing high-carbon recipes for fast diamond growth?",
+    "keywords": ["high-carbon", "recipe", "fast growth", "diamond"],
+    "candidate_constraint_ids": ["mpcvd-non-diamond-carbon-check", "mpcvd-bo-safe-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q026",
+    "axis": "methane_hydrogen_gas",
+    "question": "How should gas purity and leak history be handled when comparing defect density?",
+    "keywords": ["gas purity", "leak", "defect density"],
+    "candidate_constraint_ids": ["mpcvd-sample-history-control", "mpcvd-defect-origin-ambiguity"]
+  },
+  {
+    "question_id": "mpcvd-q027",
+    "axis": "methane_hydrogen_gas",
+    "question": "Can H2/CH4 flow ratio be transferred across reactors without recalibrating plasma state?",
+    "keywords": ["H2", "CH4", "flow ratio", "reactor", "transfer"],
+    "candidate_constraint_ids": ["mpcvd-recipe-transfer-limits", "mpcvd-pressure-window"]
+  },
+  {
+    "question_id": "mpcvd-q028",
+    "axis": "defects_failure_modes",
+    "question": "How can defect density changes be assigned to methane ratio rather than substrate damage?",
+    "keywords": ["defect density", "methane", "substrate damage"],
+    "candidate_constraint_ids": ["mpcvd-defect-origin-ambiguity", "mpcvd-substrate-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q029",
+    "axis": "defects_failure_modes",
+    "question": "What should be checked before interpreting Raman D/G features as failed diamond growth?",
+    "keywords": ["Raman", "D/G", "failed growth", "diamond"],
+    "candidate_constraint_ids": ["mpcvd-measurement-proxy", "mpcvd-non-diamond-carbon-check"]
+  },
+  {
+    "question_id": "mpcvd-q030",
+    "axis": "defects_failure_modes",
+    "question": "Can delamination be used as evidence for poor plasma chemistry without adhesion controls?",
+    "keywords": ["delamination", "plasma chemistry", "adhesion"],
+    "candidate_constraint_ids": ["mpcvd-defect-origin-ambiguity", "mpcvd-substrate-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q031",
+    "axis": "defects_failure_modes",
+    "question": "How should microcrack formation be separated from thermal stress and grain coalescence effects?",
+    "keywords": ["microcrack", "thermal stress", "grain coalescence"],
+    "candidate_constraint_ids": ["mpcvd-thermal-gradient-artifact", "mpcvd-defect-origin-ambiguity"]
+  },
+  {
+    "question_id": "mpcvd-q032",
+    "axis": "defects_failure_modes",
+    "question": "What constraint prevents treating all surface roughness increases as defect density increases?",
+    "keywords": ["surface roughness", "defect density", "constraint"],
+    "candidate_constraint_ids": ["mpcvd-measurement-proxy", "mpcvd-defect-origin-ambiguity"]
+  },
+  {
+    "question_id": "mpcvd-q033",
+    "axis": "defects_failure_modes",
+    "question": "Should post-growth annealing effects be separated before ranking growth recipes by electrical quality?",
+    "keywords": ["post-growth", "annealing", "growth recipe", "electrical quality"],
+    "candidate_constraint_ids": ["mpcvd-post-growth-treatment-separation", "mpcvd-dopant-growth-compatibility"]
+  },
+  {
+    "question_id": "mpcvd-q034",
+    "axis": "defects_failure_modes",
+    "question": "How can dopant-related defects be distinguished from intrinsic growth defects in homoepitaxial diamond?",
+    "keywords": ["dopant", "defect", "homoepitaxial", "diamond"],
+    "candidate_constraint_ids": ["mpcvd-dopant-growth-compatibility", "mpcvd-defect-origin-ambiguity"]
+  },
+  {
+    "question_id": "mpcvd-q035",
+    "axis": "measurement_interpretation",
+    "question": "Can SEM morphology alone justify a mechanism claim about plasma chemistry?",
+    "keywords": ["SEM", "morphology", "mechanism", "plasma chemistry"],
+    "candidate_constraint_ids": ["mpcvd-measurement-proxy", "mpcvd-mechanism-validation-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q036",
+    "axis": "measurement_interpretation",
+    "question": "How should Raman quality, AFM roughness, and growth rate be weighted when they disagree?",
+    "keywords": ["Raman", "AFM", "roughness", "growth rate", "disagree"],
+    "candidate_constraint_ids": ["mpcvd-measurement-proxy"]
+  },
+  {
+    "question_id": "mpcvd-q037",
+    "axis": "measurement_interpretation",
+    "question": "What measurement grid is needed to compare center-edge nonuniformity across recipes?",
+    "keywords": ["measurement grid", "center-edge", "nonuniformity", "recipe"],
+    "candidate_constraint_ids": ["mpcvd-scaleup-edge-effect", "mpcvd-measurement-proxy"]
+  },
+  {
+    "question_id": "mpcvd-q038",
+    "axis": "measurement_interpretation",
+    "question": "When OES and Raman signals disagree, which hidden variables should be reviewed first?",
+    "keywords": ["OES", "Raman", "hidden variables", "disagree"],
+    "candidate_constraint_ids": ["mpcvd-oes-calibration", "mpcvd-measurement-proxy", "mpcvd-control-variable-confounding"]
+  },
+  {
+    "question_id": "mpcvd-q039",
+    "axis": "measurement_interpretation",
+    "question": "Can one ex-situ measurement after growth explain time-dependent plasma instability?",
+    "keywords": ["ex-situ", "time-dependent", "plasma instability"],
+    "candidate_constraint_ids": ["mpcvd-time-dependent-drift", "mpcvd-measurement-proxy"]
+  },
+  {
+    "question_id": "mpcvd-q040",
+    "axis": "measurement_interpretation",
+    "question": "What evidence boundary separates correlation ranking from mechanistic explanation in AI-guided MPCVD analysis?",
+    "keywords": ["correlation", "mechanistic explanation", "AI-guided", "MPCVD"],
+    "candidate_constraint_ids": ["mpcvd-mechanism-validation-boundary", "mpcvd-measurement-proxy"]
+  },
+  {
+    "question_id": "mpcvd-q041",
+    "axis": "equipment_feasibility",
+    "question": "Which equipment constraints should block a suggested recipe before expert discussion starts?",
+    "keywords": ["equipment", "block", "recipe", "expert discussion"],
+    "candidate_constraint_ids": ["mpcvd-pressure-window", "mpcvd-bo-safe-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q042",
+    "axis": "equipment_feasibility",
+    "question": "How should substrate holder geometry be represented as a constraint in recipe recommendation?",
+    "keywords": ["substrate holder", "geometry", "constraint", "recipe"],
+    "candidate_constraint_ids": ["mpcvd-substrate-holder-artifact"]
+  },
+  {
+    "question_id": "mpcvd-q043",
+    "axis": "equipment_feasibility",
+    "question": "Can a recipe be called feasible if it sits near a known plasma transition boundary?",
+    "keywords": ["feasible", "plasma transition", "boundary"],
+    "candidate_constraint_ids": ["mpcvd-pressure-window", "mpcvd-feasibility-before-optimization"]
+  },
+  {
+    "question_id": "mpcvd-q044",
+    "axis": "equipment_feasibility",
+    "question": "What operator notes must be captured before treating a failed run as a model data point?",
+    "keywords": ["operator notes", "failed run", "model data point"],
+    "candidate_constraint_ids": ["mpcvd-run-metadata-required", "mpcvd-feasibility-before-optimization"]
+  },
+  {
+    "question_id": "mpcvd-q045",
+    "axis": "equipment_feasibility",
+    "question": "How should maintenance history affect interpretation of sudden growth rate shifts?",
+    "keywords": ["maintenance", "history", "growth rate", "shift"],
+    "candidate_constraint_ids": ["mpcvd-run-metadata-required", "mpcvd-time-dependent-drift"]
+  },
+  {
+    "question_id": "mpcvd-q046",
+    "axis": "scaleup_reproducibility_bo",
+    "question": "Should recipe optimization start before repeat runs verify variance at the same setpoint?",
+    "keywords": ["recipe optimization", "repeat runs", "variance", "setpoint"],
+    "candidate_constraint_ids": ["mpcvd-feasibility-before-optimization", "mpcvd-bo-safe-boundary"]
+  },
+  {
+    "question_id": "mpcvd-q047",
+    "axis": "scaleup_reproducibility_bo",
+    "question": "How should center-edge uniformity constraints be included before scaling substrate size?",
+    "keywords": ["center-edge", "uniformity", "scale", "substrate size"],
+    "candidate_constraint_ids": ["mpcvd-scaleup-edge-effect", "mpcvd-thermal-gradient-artifact"]
+  },
+  {
+    "question_id": "mpcvd-q048",
+    "axis": "scaleup_reproducibility_bo",
+    "question": "Can a recipe learned on one chamber be transferred to another chamber without new calibration?",
+    "keywords": ["recipe transfer", "chamber", "calibration"],
+    "candidate_constraint_ids": ["mpcvd-recipe-transfer-limits", "mpcvd-pressure-window"]
+  },
+  {
+    "question_id": "mpcvd-q049",
+    "axis": "scaleup_reproducibility_bo",
+    "question": "What constraints should BO respect when proposing high-growth-rate but low-evidence experiments?",
+    "keywords": ["BO", "high growth rate", "low evidence", "experiment"],
+    "candidate_constraint_ids": ["mpcvd-bo-safe-boundary", "mpcvd-feasibility-before-optimization"]
+  },
+  {
+    "question_id": "mpcvd-q050",
+    "axis": "scaleup_reproducibility_bo",
+    "question": "How should the system decide whether a new insight becomes a candidate constraint rather than an approved wiki rule?",
+    "keywords": ["candidate constraint", "approved", "wiki", "rule"],
+    "candidate_constraint_ids": ["mpcvd-user-approval-required"]
+  }
+]

@@ -1,0 +1,913 @@
+[
+  {
+    "constraint_id": "mpcvd-pressure-window",
+    "text": "압력·gas composition·microwave power 조합은 현재 MPCVD 장비의 안정 plasma window 안에서만 해석해야 한다.",
+    "constraint_type": "hard",
+    "scope": "project",
+    "why": "plasma가 불안정한 조건에서는 성장률·결함·온도 해석이 장비 artifact와 섞일 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.72,
+    "numeric_bounds": [
+      {
+        "parameter": "chamber_pressure",
+        "unit": "Torr",
+        "min_value": 20,
+        "max_value": 250,
+        "recommended_min": 40,
+        "recommended_max": 180,
+        "basis": "일반 MPCVD diamond growth 문헌·도메인 prior이며 실제 reactor plasma window로 재승인 필요",
+        "source": "literature-prior",
+        "confidence": 0.58,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "microwave_power",
+        "unit": "kW",
+        "min_value": 0.8,
+        "max_value": 6,
+        "recommended_min": 1.5,
+        "recommended_max": 4.5,
+        "basis": "lab-scale MPCVD 운전 prior, cavity와 substrate size에 따라 크게 달라질 수 있음",
+        "source": "literature-prior",
+        "confidence": 0.52,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "total_gas_flow",
+        "unit": "sccm",
+        "min_value": 100,
+        "max_value": 1000,
+        "recommended_min": 200,
+        "recommended_max": 600,
+        "basis": "H2-rich MPCVD recipe prior, mass-flow controller range 확인 필요",
+        "source": "literature-prior",
+        "confidence": 0.48,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["pressure", "plasma", "microwave", "gas", "boundary", "transition", "조건", "압력", "플라즈마"],
+    "source_question_ids": ["mpcvd-q014", "mpcvd-q016", "mpcvd-q020", "mpcvd-q027", "mpcvd-q041", "mpcvd-q043", "mpcvd-q048"]
+  },
+  {
+    "constraint_id": "mpcvd-substrate-boundary",
+    "text": "substrate pretreatment와 nucleation condition을 분리하지 않으면 초기 성장 해석을 공정 변수 효과로 단정하면 안 된다.",
+    "constraint_type": "hard",
+    "scope": "project",
+    "why": "seed density와 surface termination이 초기 diamond growth를 크게 좌우한다.",
+    "source": "question-seed",
+    "confidence": 0.76,
+    "numeric_bounds": [
+      {
+        "parameter": "nanodiamond_seed_size",
+        "unit": "nm",
+        "min_value": 4,
+        "max_value": 50,
+        "recommended_min": 4,
+        "recommended_max": 10,
+        "basis": "ultrananocrystalline seeding prior, 실제 slurry와 기판 roughness 확인 필요",
+        "source": "literature-prior",
+        "confidence": 0.57,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "seeding_time",
+        "unit": "min",
+        "min_value": 5,
+        "max_value": 60,
+        "recommended_min": 15,
+        "recommended_max": 45,
+        "basis": "sonication/seeding process prior, pretreatment protocol별 재승인 필요",
+        "source": "domain-prior",
+        "confidence": 0.5,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "nucleation_density",
+        "unit": "cm^-2",
+        "min_value": 100000000,
+        "recommended_min": 10000000000,
+        "basis": "초기 성장 비교를 위한 seed coverage 후보 기준",
+        "source": "literature-prior",
+        "confidence": 0.46,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["substrate", "nucleation", "pretreatment", "surface", "seed", "roughness", "adhesion", "기판", "핵생성"],
+    "source_question_ids": ["mpcvd-q001", "mpcvd-q002", "mpcvd-q003", "mpcvd-q005", "mpcvd-q006", "mpcvd-q007", "mpcvd-q021", "mpcvd-q028", "mpcvd-q030"]
+  },
+  {
+    "constraint_id": "mpcvd-measurement-proxy",
+    "text": "Raman, SEM, AFM, OES, electrical proxy를 서로 다른 현상의 직접 증거처럼 혼용하지 말고 측정 목적을 분리해야 한다.",
+    "constraint_type": "anti-pattern",
+    "scope": "project",
+    "why": "proxy mismatch는 성장 메커니즘과 측정 artifact를 혼동하게 만든다.",
+    "source": "question-seed",
+    "confidence": 0.72,
+    "numeric_bounds": [
+      {
+        "parameter": "diamond_raman_peak",
+        "unit": "cm^-1",
+        "min_value": 1330.5,
+        "max_value": 1334.5,
+        "nominal_value": 1332.5,
+        "basis": "diamond Raman line 기준 후보, strain·calibration에 따른 shift 별도 해석 필요",
+        "source": "literature-prior",
+        "confidence": 0.62,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "raman_mapping_points",
+        "unit": "count",
+        "min_value": 9,
+        "recommended_min": 25,
+        "basis": "center-edge 및 local artifact 분리를 위한 최소 mapping 후보",
+        "source": "domain-prior",
+        "confidence": 0.54,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["raman", "sem", "afm", "oes", "electrical", "measurement", "proxy", "morphology", "roughness", "측정"],
+    "source_question_ids": ["mpcvd-q009", "mpcvd-q013", "mpcvd-q019", "mpcvd-q029", "mpcvd-q032", "mpcvd-q035", "mpcvd-q036", "mpcvd-q037", "mpcvd-q038", "mpcvd-q039", "mpcvd-q040"]
+  },
+  {
+    "constraint_id": "mpcvd-feasibility-before-optimization",
+    "text": "최적화 논의 전에 먼저 growth feasibility와 reproducibility가 확보된 실험 영역인지 확인해야 한다.",
+    "constraint_type": "soft",
+    "scope": "project",
+    "why": "재현성이 없는 영역에서는 optimization 결과가 우연에 과적합될 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.7,
+    "numeric_bounds": [
+      {
+        "parameter": "repeat_runs_per_condition",
+        "unit": "count",
+        "min_value": 3,
+        "recommended_min": 3,
+        "basis": "BO 전 feasibility와 variance 확인을 위한 최소 반복 후보",
+        "source": "domain-prior",
+        "confidence": 0.61,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "baseline_growth_rate_cv",
+        "unit": "%",
+        "max_value": 15,
+        "recommended_max": 10,
+        "basis": "최적화 전 baseline reproducibility 후보 기준",
+        "source": "domain-prior",
+        "confidence": 0.48,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["optimiz", "optimization", "reproducibility", "repeat", "variance", "feasibility", "최적화", "재현성"],
+    "source_question_ids": ["mpcvd-q043", "mpcvd-q044", "mpcvd-q046", "mpcvd-q049"]
+  },
+  {
+    "constraint_id": "mpcvd-methane-interpretation",
+    "text": "methane ratio 변화는 growth rate 향상과 defect 증가 가능성을 동시에 검토해야 한다.",
+    "constraint_type": "assumption",
+    "scope": "project",
+    "why": "CH4 증가 효과는 성장 촉진과 non-diamond carbon 증가를 함께 유발할 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.69,
+    "numeric_bounds": [
+      {
+        "parameter": "ch4_in_h2_fraction",
+        "unit": "%",
+        "min_value": 0.2,
+        "max_value": 5,
+        "recommended_min": 0.5,
+        "recommended_max": 3,
+        "basis": "H2/CH4 MPCVD diamond growth prior, 고탄소 조건은 sp2 검증 필요",
+        "source": "literature-prior",
+        "confidence": 0.6,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "ch4_step_size",
+        "unit": "%p",
+        "min_value": 0.1,
+        "max_value": 1,
+        "recommended_min": 0.1,
+        "recommended_max": 0.5,
+        "basis": "결함 증가를 분리하기 위한 methane sweep granularity 후보",
+        "source": "domain-prior",
+        "confidence": 0.5,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["methane", "ch4", "carbon", "defect", "growth", "ratio", "메탄"],
+    "source_question_ids": ["mpcvd-q003", "mpcvd-q008", "mpcvd-q021", "mpcvd-q022", "mpcvd-q024", "mpcvd-q028"]
+  },
+  {
+    "constraint_id": "mpcvd-temperature-nonindependent",
+    "text": "substrate temperature는 단독 변수로 보기보다 plasma state와 surface kinetics의 결합 변수로 해석해야 한다.",
+    "constraint_type": "assumption",
+    "scope": "project",
+    "why": "온도 효과만 분리하려면 plasma chemistry와 표면 조건의 교락을 함께 제어해야 한다.",
+    "source": "question-seed",
+    "confidence": 0.68,
+    "numeric_bounds": [
+      {
+        "parameter": "substrate_temperature",
+        "unit": "°C",
+        "min_value": 700,
+        "max_value": 1100,
+        "recommended_min": 800,
+        "recommended_max": 1000,
+        "basis": "diamond MPCVD substrate temperature prior, pyrometer emissivity와 holder coupling 확인 필요",
+        "source": "literature-prior",
+        "confidence": 0.58,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "temperature_step_size",
+        "unit": "°C",
+        "min_value": 10,
+        "max_value": 100,
+        "recommended_min": 25,
+        "recommended_max": 50,
+        "basis": "온도 sweep에서 plasma-state confounding을 줄이기 위한 후보 step",
+        "source": "domain-prior",
+        "confidence": 0.46,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["temperature", "thermal", "pyrometer", "emissivity", "surface", "kinetics", "온도"],
+    "source_question_ids": ["mpcvd-q012", "mpcvd-q015", "mpcvd-q019"]
+  },
+  {
+    "constraint_id": "mpcvd-hydrogen-etch-balance",
+    "text": "hydrogen flow나 H2 dilution 효과는 diamond growth 촉진과 non-diamond carbon etching의 균형으로 함께 해석해야 한다.",
+    "constraint_type": "assumption",
+    "scope": "project",
+    "why": "H radical은 표면 안정화와 etching selectivity에 동시에 관여해 단일 방향 효과로 단정하기 어렵다.",
+    "source": "question-seed",
+    "confidence": 0.67,
+    "numeric_bounds": [
+      {
+        "parameter": "h2_dilution",
+        "unit": "%",
+        "min_value": 95,
+        "max_value": 99.8,
+        "recommended_min": 97,
+        "recommended_max": 99.5,
+        "basis": "H2-rich diamond MPCVD prior, carbon source와 total flow 동시 확인 필요",
+        "source": "literature-prior",
+        "confidence": 0.57,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "h2_to_ch4_ratio",
+        "unit": "ratio",
+        "min_value": 20,
+        "max_value": 500,
+        "recommended_min": 50,
+        "recommended_max": 200,
+        "basis": "diamond growth와 non-diamond etching balance 후보",
+        "source": "literature-prior",
+        "confidence": 0.55,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["hydrogen", "h2", "dilution", "etch", "etching", "selectivity", "defect", "수소"],
+    "source_question_ids": ["mpcvd-q010", "mpcvd-q023"]
+  },
+  {
+    "constraint_id": "mpcvd-pressure-power-coupling",
+    "text": "pressure와 microwave power를 동시에 바꾸면 plasma density, gas temperature, substrate heating이 함께 변하므로 단일 변수 효과로 해석하면 안 된다.",
+    "constraint_type": "hard",
+    "scope": "project",
+    "why": "pressure-power coupling은 radical generation과 thermal budget을 동시에 바꿔 causal attribution을 흐린다.",
+    "source": "question-seed",
+    "confidence": 0.73,
+    "numeric_bounds": [
+      {
+        "parameter": "primary_variables_changed_per_run",
+        "unit": "count",
+        "max_value": 1,
+        "recommended_max": 1,
+        "basis": "single-factor screening이나 constrained DOE에서 causal attribution을 보존하기 위한 후보",
+        "source": "domain-prior",
+        "confidence": 0.64,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "pressure_step_size",
+        "unit": "Torr",
+        "min_value": 5,
+        "max_value": 50,
+        "recommended_min": 10,
+        "recommended_max": 25,
+        "basis": "plasma mode jump를 피하기 위한 pressure sweep 후보",
+        "source": "domain-prior",
+        "confidence": 0.45,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "microwave_power_step_size",
+        "unit": "kW",
+        "min_value": 0.1,
+        "max_value": 1,
+        "recommended_min": 0.1,
+        "recommended_max": 0.5,
+        "basis": "thermal/plasma coupling 변화 추적을 위한 power sweep 후보",
+        "source": "domain-prior",
+        "confidence": 0.45,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["pressure", "power", "microwave", "plasma density", "gas temperature", "coupling", "causality", "압력", "파워"],
+    "source_question_ids": ["mpcvd-q012", "mpcvd-q015", "mpcvd-q016"]
+  },
+  {
+    "constraint_id": "mpcvd-bias-nucleation-separation",
+    "text": "bias-enhanced nucleation이나 BEN 조건은 이후 성장 단계와 분리해 기록하고 비교해야 한다.",
+    "constraint_type": "hard",
+    "scope": "project",
+    "why": "bias 단계에서 생긴 nucleation density와 defect seed가 이후 growth kinetics 비교를 지배할 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.71,
+    "numeric_bounds": [
+      {
+        "parameter": "ben_bias_voltage",
+        "unit": "V",
+        "min_value": -300,
+        "max_value": -50,
+        "recommended_min": -250,
+        "recommended_max": -100,
+        "basis": "bias-enhanced nucleation prior, 장비 전극 구성과 arcing limit 확인 필요",
+        "source": "literature-prior",
+        "confidence": 0.49,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "ben_duration",
+        "unit": "min",
+        "min_value": 1,
+        "max_value": 60,
+        "recommended_min": 5,
+        "recommended_max": 30,
+        "basis": "nucleation과 growth stage 분리를 위한 BEN duration 후보",
+        "source": "literature-prior",
+        "confidence": 0.47,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["BEN", "bias", "bias-enhanced", "nucleation", "seeding", "density", "핵생성"],
+    "source_question_ids": ["mpcvd-q002"]
+  },
+  {
+    "constraint_id": "mpcvd-substrate-holder-artifact",
+    "text": "substrate holder geometry와 fixture 조건은 plasma field와 thermal field를 바꿀 수 있으므로 passive fixture로 가정하면 안 된다.",
+    "constraint_type": "hard",
+    "scope": "project",
+    "why": "holder shape는 cavity field, local heating, plasma ignition 위치를 바꿔 recipe 효과처럼 보이는 artifact를 만들 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.75,
+    "numeric_bounds": [
+      {
+        "parameter": "center_edge_temperature_delta",
+        "unit": "°C",
+        "max_value": 30,
+        "recommended_max": 15,
+        "basis": "holder artifact 분리를 위한 center-edge thermal uniformity 후보",
+        "source": "domain-prior",
+        "confidence": 0.5,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "holder_geometry_variants_per_comparison",
+        "unit": "count",
+        "max_value": 1,
+        "recommended_max": 1,
+        "basis": "fixture 변경을 recipe 변경과 분리하기 위한 비교 설계 후보",
+        "source": "domain-prior",
+        "confidence": 0.56,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["substrate holder", "holder", "fixture", "geometry", "field", "cavity", "mode", "AFM", "지그"],
+    "source_question_ids": ["mpcvd-q004", "mpcvd-q018", "mpcvd-q042"]
+  },
+  {
+    "constraint_id": "mpcvd-dopant-growth-compatibility",
+    "text": "dopant 관련 전기적 품질은 growth recipe 효과와 dopant activation·compensation 효과를 분리해 검토해야 한다.",
+    "constraint_type": "assumption",
+    "scope": "project",
+    "why": "homoepitaxial diamond의 electrical quality는 intrinsic growth defect와 dopant-specific defect가 겹쳐 해석될 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.64,
+    "numeric_bounds": [
+      {
+        "parameter": "dopant_recipe_change_per_run",
+        "unit": "count",
+        "max_value": 1,
+        "recommended_max": 1,
+        "basis": "growth recipe 효과와 dopant effect confounding을 줄이기 위한 후보",
+        "source": "domain-prior",
+        "confidence": 0.55,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "electrical_measurement_replicates",
+        "unit": "count",
+        "min_value": 3,
+        "recommended_min": 5,
+        "basis": "dopant activation·compensation 분리를 위한 최소 반복 측정 후보",
+        "source": "domain-prior",
+        "confidence": 0.45,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["dopant", "doping", "electrical", "homoepitaxial", "activation", "compensation", "diode", "도핑"],
+    "source_question_ids": ["mpcvd-q033", "mpcvd-q034"]
+  },
+  {
+    "constraint_id": "mpcvd-thermal-gradient-artifact",
+    "text": "center-edge 차이나 microcrack은 공정 chemistry만이 아니라 thermal gradient와 stress artifact 가능성을 먼저 배제해야 한다.",
+    "constraint_type": "assumption",
+    "scope": "project",
+    "why": "온도 구배와 stress는 grain coalescence, crack, morphology 변화를 recipe 효과처럼 보이게 할 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.69,
+    "numeric_bounds": [
+      {
+        "parameter": "center_edge_temperature_delta",
+        "unit": "°C",
+        "max_value": 30,
+        "recommended_max": 15,
+        "basis": "thermal gradient artifact 배제를 위한 후보 threshold",
+        "source": "domain-prior",
+        "confidence": 0.52,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "cooling_rate",
+        "unit": "°C/min",
+        "max_value": 50,
+        "recommended_min": 5,
+        "recommended_max": 20,
+        "basis": "microcrack/stress artifact 관리 후보, 장비 cooling profile 확인 필요",
+        "source": "domain-prior",
+        "confidence": 0.44,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["thermal gradient", "microcrack", "stress", "center", "edge", "temperature", "crack", "열구배"],
+    "source_question_ids": ["mpcvd-q017", "mpcvd-q031", "mpcvd-q047"]
+  },
+  {
+    "constraint_id": "mpcvd-defect-origin-ambiguity",
+    "text": "defect density 변화는 plasma chemistry, substrate damage, dopant effect, thermal stress 중 어느 원인인지 분리하기 전에는 단일 원인으로 결론내리면 안 된다.",
+    "constraint_type": "anti-pattern",
+    "scope": "project",
+    "why": "동일한 결함 지표가 서로 다른 원인에서 나타날 수 있어 원인 attribution 오류가 생긴다.",
+    "source": "question-seed",
+    "confidence": 0.72,
+    "numeric_bounds": [
+      {
+        "parameter": "independent_diagnostic_count",
+        "unit": "count",
+        "min_value": 2,
+        "recommended_min": 3,
+        "basis": "defect origin attribution 전 Raman/SEM/AFM/electrical 등 독립 proxy 수 후보",
+        "source": "domain-prior",
+        "confidence": 0.57,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "repeat_samples_for_defect_claim",
+        "unit": "count",
+        "min_value": 3,
+        "recommended_min": 5,
+        "basis": "단일 원인 결론 전 sample-to-sample variation 확인 후보",
+        "source": "domain-prior",
+        "confidence": 0.52,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["defect", "damage", "delamination", "microcrack", "roughness", "dopant", "thermal stress", "결함"],
+    "source_question_ids": ["mpcvd-q010", "mpcvd-q026", "mpcvd-q028", "mpcvd-q030", "mpcvd-q031", "mpcvd-q032", "mpcvd-q034"]
+  },
+  {
+    "constraint_id": "mpcvd-non-diamond-carbon-check",
+    "text": "고탄소 또는 methane-rich 조건은 growth rate만 보지 말고 non-diamond carbon 형성 여부를 별도로 확인해야 한다.",
+    "constraint_type": "hard",
+    "scope": "project",
+    "why": "빠른 성장 조건은 sp2 carbon, D/G signal, morphology degradation을 동반할 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.7,
+    "numeric_bounds": [
+      {
+        "parameter": "ch4_in_h2_fraction",
+        "unit": "%",
+        "max_value": 5,
+        "recommended_max": 3,
+        "basis": "methane-rich 조건에서 sp2 carbon 확인을 강제하기 위한 후보 threshold",
+        "source": "literature-prior",
+        "confidence": 0.58,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "raman_sp2_to_diamond_ratio",
+        "unit": "ratio",
+        "max_value": 0.1,
+        "recommended_max": 0.05,
+        "basis": "non-diamond carbon flag 후보이며 Raman 처리법별 재보정 필요",
+        "source": "domain-prior",
+        "confidence": 0.38,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["non-diamond", "sp2", "D/G", "carbon", "methane-rich", "high-carbon", "Raman", "growth rate"],
+    "source_question_ids": ["mpcvd-q014", "mpcvd-q022", "mpcvd-q025", "mpcvd-q029"]
+  },
+  {
+    "constraint_id": "mpcvd-oes-calibration",
+    "text": "OES intensity trend는 calibration이나 보조 진단 없이 radical concentration의 직접 측정값으로 취급하면 안 된다.",
+    "constraint_type": "anti-pattern",
+    "scope": "project",
+    "why": "OES signal은 excitation condition, line-of-sight, plasma state 변화에 민감해 농도 proxy로만 제한적으로 해석해야 한다.",
+    "source": "question-seed",
+    "confidence": 0.71,
+    "numeric_bounds": [
+      {
+        "parameter": "oes_integration_time",
+        "unit": "ms",
+        "min_value": 10,
+        "max_value": 1000,
+        "recommended_min": 50,
+        "recommended_max": 200,
+        "basis": "signal saturation과 noise를 피하기 위한 OES acquisition 후보",
+        "source": "domain-prior",
+        "confidence": 0.42,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "oes_calibration_interval",
+        "unit": "runs",
+        "max_value": 5,
+        "recommended_max": 3,
+        "basis": "trend 해석 전 calibration drift 관리를 위한 후보",
+        "source": "domain-prior",
+        "confidence": 0.43,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["OES", "optical emission", "intensity", "radical", "calibration", "diagnostics"],
+    "source_question_ids": ["mpcvd-q009", "mpcvd-q038"]
+  },
+  {
+    "constraint_id": "mpcvd-sample-history-control",
+    "text": "sample cleaning, gas purity, leak, surface termination, prior run history는 substrate·defect 비교 전에 metadata로 고정하거나 기록해야 한다.",
+    "constraint_type": "soft",
+    "scope": "project",
+    "why": "hidden history가 nucleation, adhesion, defect density를 바꾸면 recipe 변수 효과와 섞인다.",
+    "source": "question-seed",
+    "confidence": 0.68,
+    "numeric_bounds": [
+      {
+        "parameter": "process_gas_purity",
+        "unit": "%",
+        "min_value": 99.99,
+        "recommended_min": 99.999,
+        "basis": "gas purity metadata flag 후보, 실제 gas spec 확인 필요",
+        "source": "domain-prior",
+        "confidence": 0.48,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "pre_run_base_pressure",
+        "unit": "mTorr",
+        "max_value": 10,
+        "recommended_max": 5,
+        "basis": "leak/background contamination 확인 후보, 장비 base pressure spec으로 교체 필요",
+        "source": "domain-prior",
+        "confidence": 0.41,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "cleaning_time",
+        "unit": "min",
+        "min_value": 5,
+        "max_value": 60,
+        "recommended_min": 10,
+        "recommended_max": 30,
+        "basis": "sample cleaning metadata 후보, 용매/플라즈마 cleaning protocol별 승인 필요",
+        "source": "domain-prior",
+        "confidence": 0.4,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["cleaning", "termination", "history", "gas purity", "leak", "metadata", "sample", "surface"],
+    "source_question_ids": ["mpcvd-q001", "mpcvd-q005", "mpcvd-q026"]
+  },
+  {
+    "constraint_id": "mpcvd-scaleup-edge-effect",
+    "text": "substrate size나 scale-up 논의에서는 center-edge uniformity와 edge effect를 독립 평가해야 한다.",
+    "constraint_type": "hard",
+    "scope": "project",
+    "why": "확대된 substrate에서는 plasma field, gas flow, thermal profile 비균일성이 성장 품질을 지배할 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.69,
+    "numeric_bounds": [
+      {
+        "parameter": "center_edge_growth_rate_variation",
+        "unit": "%",
+        "max_value": 10,
+        "recommended_max": 5,
+        "basis": "scale-up uniformity 판단 후보, application target별 조정 필요",
+        "source": "domain-prior",
+        "confidence": 0.47,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "uniformity_measurement_grid_points",
+        "unit": "count",
+        "min_value": 9,
+        "recommended_min": 25,
+        "basis": "center-edge 평가를 위한 최소 sampling grid 후보",
+        "source": "domain-prior",
+        "confidence": 0.52,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["scale", "scale-up", "center-edge", "edge", "uniformity", "substrate size", "nonuniformity", "균일도"],
+    "source_question_ids": ["mpcvd-q017", "mpcvd-q037", "mpcvd-q047"]
+  },
+  {
+    "constraint_id": "mpcvd-recipe-transfer-limits",
+    "text": "한 reactor나 chamber에서 학습한 H2/CH4 recipe는 plasma state 재보정 없이 다른 장비로 그대로 이전하면 안 된다.",
+    "constraint_type": "hard",
+    "scope": "project",
+    "why": "reactor geometry, coupling, residence time 차이가 같은 nominal flow ratio의 실제 plasma chemistry를 바꾼다.",
+    "source": "question-seed",
+    "confidence": 0.72,
+    "numeric_bounds": [
+      {
+        "parameter": "recalibration_runs_per_reactor",
+        "unit": "count",
+        "min_value": 3,
+        "recommended_min": 5,
+        "basis": "recipe transfer 전 reactor-specific plasma/growth baseline 확인 후보",
+        "source": "domain-prior",
+        "confidence": 0.55,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "plasma_metric_tolerance",
+        "unit": "%",
+        "max_value": 10,
+        "recommended_max": 5,
+        "basis": "OES/power/reflected-power 등 normalized plasma state matching 후보",
+        "source": "domain-prior",
+        "confidence": 0.42,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["transfer", "reactor", "chamber", "calibration", "flow ratio", "residence time", "recipe transfer"],
+    "source_question_ids": ["mpcvd-q027", "mpcvd-q048"]
+  },
+  {
+    "constraint_id": "mpcvd-bo-safe-boundary",
+    "text": "BO나 optimizer가 제안한 recipe는 승인된 hard constraint와 safe experimental boundary 밖이면 실행 후보가 아니라 검토 후보로만 남겨야 한다.",
+    "constraint_type": "hard",
+    "scope": "project",
+    "why": "제약 밖 조건을 자동 실행 대상으로 두면 장비 안정성·재현성·해석 가능성이 동시에 깨질 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.76,
+    "numeric_bounds": [
+      {
+        "parameter": "safe_boundary_violation_count",
+        "unit": "count",
+        "max_value": 0,
+        "recommended_max": 0,
+        "basis": "optimizer 추천 조건의 hard constraint gate 후보",
+        "source": "domain-prior",
+        "confidence": 0.82,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "max_parameter_step_fraction",
+        "unit": "fraction",
+        "max_value": 0.25,
+        "recommended_max": 0.1,
+        "basis": "저근거 영역에서 aggressive jump를 제한하기 위한 후보",
+        "source": "domain-prior",
+        "confidence": 0.48,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "minimum_evidence_runs_before_expansion",
+        "unit": "count",
+        "min_value": 3,
+        "recommended_min": 5,
+        "basis": "safe boundary 확장 전 evidence 확보 후보",
+        "source": "domain-prior",
+        "confidence": 0.5,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["BO", "optimizer", "optimization", "safe", "boundary", "aggressive", "low evidence", "recipe", "최적화"],
+    "source_question_ids": ["mpcvd-q007", "mpcvd-q020", "mpcvd-q025", "mpcvd-q041", "mpcvd-q046", "mpcvd-q049"]
+  },
+  {
+    "constraint_id": "mpcvd-time-dependent-drift",
+    "text": "long run이나 maintenance 전후 비교에서는 plasma drift와 chamber condition 변화를 recipe 효과와 분리해야 한다.",
+    "constraint_type": "assumption",
+    "scope": "project",
+    "why": "시간 의존 drift는 같은 setpoint에서도 성장률과 결함 지표를 바꿀 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.67,
+    "numeric_bounds": [
+      {
+        "parameter": "drift_monitor_interval",
+        "unit": "min",
+        "max_value": 30,
+        "recommended_max": 10,
+        "basis": "long run 중 plasma/temperature drift 추적 interval 후보",
+        "source": "domain-prior",
+        "confidence": 0.45,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "rebaseline_interval_after_maintenance",
+        "unit": "runs",
+        "min_value": 1,
+        "recommended_min": 3,
+        "basis": "maintenance 전후 recipe 비교 전 baseline 재확인 후보",
+        "source": "domain-prior",
+        "confidence": 0.5,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["drift", "long run", "maintenance", "time-dependent", "instability", "shift", "plasma drift"],
+    "source_question_ids": ["mpcvd-q011", "mpcvd-q039", "mpcvd-q045"]
+  },
+  {
+    "constraint_id": "mpcvd-control-variable-confounding",
+    "text": "서로 결합된 공정 변수는 control variable과 response variable을 명시하기 전까지 독립 인과 효과로 해석하면 안 된다.",
+    "constraint_type": "anti-pattern",
+    "scope": "project",
+    "why": "gas residence time, plasma density, substrate state처럼 함께 움직이는 변수는 잘못된 causal attribution을 만든다.",
+    "source": "question-seed",
+    "confidence": 0.71,
+    "numeric_bounds": [
+      {
+        "parameter": "simultaneous_primary_variable_changes",
+        "unit": "count",
+        "max_value": 1,
+        "recommended_max": 1,
+        "basis": "독립 인과 효과 해석 전 control variable 분리 후보",
+        "source": "domain-prior",
+        "confidence": 0.65,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "doe_replicates_per_cell",
+        "unit": "count",
+        "min_value": 3,
+        "recommended_min": 3,
+        "basis": "confounding 분리와 variance 추정 후보",
+        "source": "domain-prior",
+        "confidence": 0.55,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["control variable", "confounding", "causality", "hidden variables", "gas residence", "independent", "separate", "분리"],
+    "source_question_ids": ["mpcvd-q003", "mpcvd-q006", "mpcvd-q008", "mpcvd-q011", "mpcvd-q024", "mpcvd-q038"]
+  },
+  {
+    "constraint_id": "mpcvd-post-growth-treatment-separation",
+    "text": "post-growth annealing, cleaning, contact formation 같은 후처리 효과는 growth recipe 평가와 분리해야 한다.",
+    "constraint_type": "hard",
+    "scope": "project",
+    "why": "후처리로 바뀐 electrical quality나 defect signal을 성장 조건의 직접 결과로 오해할 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.66,
+    "numeric_bounds": [
+      {
+        "parameter": "post_growth_treatment_changes_per_growth_comparison",
+        "unit": "count",
+        "max_value": 0,
+        "recommended_max": 0,
+        "basis": "growth recipe 비교에서는 후처리 조건을 고정하기 위한 후보",
+        "source": "domain-prior",
+        "confidence": 0.7,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "post_treatment_recorded_parameters",
+        "unit": "count",
+        "min_value": 4,
+        "recommended_min": 6,
+        "basis": "annealing/cleaning/contact 변수 기록 completeness 후보",
+        "source": "domain-prior",
+        "confidence": 0.48,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["post-growth", "annealing", "contact", "electrical quality", "treatment", "후처리"],
+    "source_question_ids": ["mpcvd-q033"]
+  },
+  {
+    "constraint_id": "mpcvd-mechanism-validation-boundary",
+    "text": "correlation ranking이나 gas-phase model만으로 mechanism claim을 확정하지 말고, 표면 또는 독립 측정으로 검증 가능한 경계 안에서만 해석해야 한다.",
+    "constraint_type": "soft",
+    "scope": "project",
+    "why": "AI ranking과 model output은 후보 설명을 좁히는 도구이지 표면 반응 메커니즘의 직접 증거가 아니다.",
+    "source": "question-seed",
+    "confidence": 0.69,
+    "numeric_bounds": [
+      {
+        "parameter": "independent_validation_methods",
+        "unit": "count",
+        "min_value": 2,
+        "recommended_min": 3,
+        "basis": "mechanism claim 전 표면/구조/플라즈마 독립 검증 수 후보",
+        "source": "domain-prior",
+        "confidence": 0.6,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "mechanism_claim_replicates",
+        "unit": "count",
+        "min_value": 3,
+        "recommended_min": 5,
+        "basis": "correlation ranking을 mechanism claim으로 올리기 전 반복 후보",
+        "source": "domain-prior",
+        "confidence": 0.52,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["mechanism", "correlation", "ranking", "model", "gas-phase", "surface validation", "AI-guided", "explanation"],
+    "source_question_ids": ["mpcvd-q013", "mpcvd-q035", "mpcvd-q040"]
+  },
+  {
+    "constraint_id": "mpcvd-run-metadata-required",
+    "text": "failed run이나 sudden shift를 model data point로 쓰기 전에 operator note, maintenance history, abnormal plasma observation을 metadata로 남겨야 한다.",
+    "constraint_type": "soft",
+    "scope": "project",
+    "why": "실패 원인 metadata가 없으면 모델이 장비 이벤트를 공정 변수 효과로 학습할 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.68,
+    "numeric_bounds": [
+      {
+        "parameter": "required_run_metadata_fields",
+        "unit": "count",
+        "min_value": 8,
+        "recommended_min": 12,
+        "basis": "recipe, pressure, power, flow, temperature, plasma note, maintenance, operator note 등 최소 기록 후보",
+        "source": "domain-prior",
+        "confidence": 0.62,
+        "needs_user_confirmation": true
+      },
+      {
+        "parameter": "abnormal_event_log_latency",
+        "unit": "hours",
+        "max_value": 24,
+        "recommended_max": 4,
+        "basis": "failed run/sudden shift metadata 누락 방지를 위한 기록 지연 후보",
+        "source": "domain-prior",
+        "confidence": 0.53,
+        "needs_user_confirmation": true
+      }
+    ],
+    "keywords": ["operator notes", "failed run", "metadata", "maintenance", "abnormal", "model data", "shift"],
+    "source_question_ids": ["mpcvd-q044", "mpcvd-q045"]
+  },
+  {
+    "constraint_id": "mpcvd-user-approval-required",
+    "text": "새로 발견된 domain constraint는 자동으로 validated wiki에 승격하지 말고 사용자 검토와 승인 후에만 적용해야 한다.",
+    "constraint_type": "hard",
+    "scope": "global",
+    "why": "암묵 제약을 자동 승격하면 LLM이 잘못 추출한 가정이 이후 토론과 BO/XAI 판단을 오염시킬 수 있다.",
+    "source": "question-seed",
+    "confidence": 0.8,
+    "numeric_bounds": [
+      {
+        "parameter": "auto_promoted_constraint_count",
+        "unit": "count",
+        "max_value": 0,
+        "recommended_max": 0,
+        "basis": "사용자 승인형 constraint wiki 운영 원칙",
+        "source": "user-feedback",
+        "confidence": 0.9,
+        "needs_user_confirmation": false
+      },
+      {
+        "parameter": "approved_constraints_required_before_injection",
+        "unit": "count",
+        "min_value": 1,
+        "recommended_min": 1,
+        "basis": "토론 prompt 주입 전 명시 승인 gate 후보",
+        "source": "user-feedback",
+        "confidence": 0.82,
+        "needs_user_confirmation": false
+      }
+    ],
+    "keywords": ["candidate constraint", "approved", "validated", "wiki", "approval", "rule", "승인", "제약"],
+    "source_question_ids": ["mpcvd-q050"]
+  }
+]

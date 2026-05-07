@@ -1,0 +1,16 @@
+{
+  "references": [
+    {
+      "material_name": "Diamond",
+      "aliases": ["C", "carbon diamond"],
+      "mode": "xrd",
+      "source_id": "cod-9008564",
+      "provenance": "COD cached CIF-derived simulated XRD reference; advisory comparison only",
+      "license_note": "COD entry metadata is treated as open reference data; preserve original attribution.",
+      "peaks": [
+        {"position": 43.9, "intensity": 1.0, "label": "111"},
+        {"position": 75.3, "intensity": 0.42, "label": "220"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+"""KICETIC FastAPI application package."""

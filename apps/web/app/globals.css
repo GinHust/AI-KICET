@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --font-sans: "Pretendard Variable", Pretendard, "Segoe UI", sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --canvas: 247 243 237;
+  --canvas-strong: 239 233 225;
+  --surface: 255 251 246;
+  --surface-muted: 249 245 239;
+  --surface-contrast: 241 236 229;
+  --ink: 34 39 46;
+  --soft: 91 98 109;
+  --faint: 130 136 145;
+  --line: 219 211 201;
+  --line-strong: 194 184 172;
+  --research: 55 97 196;
+  --bo: 172 108 33;
+  --xai: 108 75 177;
+  --success: 29 128 95;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: rgb(var(--canvas));
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: rgb(var(--ink));
+  background-image:
+    radial-gradient(circle at top left, rgba(78, 121, 214, 0.12), transparent 30%),
+    radial-gradient(circle at right 18%, rgba(167, 124, 72, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(247, 243, 237, 0.92));
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::selection {
+  background: rgba(55, 97, 196, 0.16);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

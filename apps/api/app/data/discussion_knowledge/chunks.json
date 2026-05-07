@@ -1,0 +1,46 @@
+[
+  {
+    "chunk_id": "chunk-diamond-methane-window",
+    "project_id": "proj-ai-research-001",
+    "title": "Stable methane-ratio window for MPCVD diamond",
+    "source": "paper",
+    "year": 2024,
+    "summary": "안정적인 methane ratio와 plasma window 제어가 growth rate와 Raman FWHM을 동시에 최적화하는 가장 강한 1차 인자였다.",
+    "excerpt": "Even when broader parameter exploration is available, methane-ratio control and plasma-stability window tuning produced the strongest first-order effect on both growth rate and crystal quality.",
+    "keywords": ["methane ratio", "mpcvd", "plasma window", "growth rate", "raman fwhm"],
+    "entity_keys": ["entity-diamond", "entity-methane-ratio", "entity-plasma-window", "entity-raman-fwhm"]
+  },
+  {
+    "chunk_id": "chunk-diamond-pressure-balance",
+    "project_id": "proj-ai-research-001",
+    "title": "Pressure balance and plasma stability in diamond growth",
+    "source": "paper",
+    "year": 2024,
+    "summary": "압력 120~140 Torr 구간에서 plasma stability가 확보될 때 성장 속도 최고점이 관찰되었으며, 그 이상에서는 불안정 패턴이 나타났다.",
+    "excerpt": "Pressure trials should be narrowed around the stable plasma window (120–140 Torr) before expanding power and methane sweeps.",
+    "keywords": ["pressure", "plasma", "stability", "diamond", "growth rate"],
+    "entity_keys": ["entity-pressure-window", "entity-plasma-stability", "entity-growth-rate"]
+  },
+  {
+    "chunk_id": "chunk-process-window",
+    "project_id": "proj-ai-research-001",
+    "title": "Power and CH₄ interaction effect on MPCVD growth",
+    "source": "experiment-log",
+    "year": 2026,
+    "summary": "BO feature importance 분석에서 전력과 CH₄/H₂ 비율의 교호작용이 성장 속도 분산의 43%를 설명했다. CH₄ 6.5% 초과 구간에서 plasma 불안정 패턴이 반복 감지되었다.",
+    "excerpt": "The power × CH₄-ratio interaction term accounts for 43% of growth rate variance across 51 Optuna trials. Runs above CH₄/H₂ 6.5% consistently showed plasma instability signatures.",
+    "keywords": ["power", "methane ratio", "interaction", "growth rate", "plasma instability"],
+    "entity_keys": ["entity-power-ch4-interaction", "entity-plasma-instability", "entity-process-window"]
+  },
+  {
+    "chunk_id": "chunk-kicetic-bridge",
+    "project_id": "proj-ai-research-001",
+    "title": "Research-to-BO bridge note",
+    "source": "internal-db",
+    "year": 2026,
+    "summary": "Research의 consensus를 BO 추천으로 바로 연결할 때, 가설 수를 늘리기보다 최고 우선 근거를 하나의 DOE 시나리오로 승격하는 편이 설명 가능성이 높다.",
+    "excerpt": "The most persuasive first story is to keep RAG embedded in Research and hand the top evidence-backed hypothesis into the next BO recommendation refresh.",
+    "keywords": ["bo", "decision", "handoff", "evidence", "next action"],
+    "entity_keys": ["entity-bo-handoff", "entity-evidence-priority", "entity-process-window"]
+  }
+]

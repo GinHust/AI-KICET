@@ -1,0 +1,17 @@
+[
+  {
+    "project_id": "proj-ai-research-001",
+    "name": "MPCVD Diamond Research",
+    "material_family": "diamond MPCVD",
+    "objective": "Maximize MPCVD diamond growth rate (μm/h) while maintaining crystal quality (Raman FWHM).",
+    "target_metric": "growth_rate",
+    "target_value": 19.2,
+    "target_unit": "μm/h",
+    "keywords": ["diamond", "mpcvd", "growth rate", "raman fwhm", "plasma", "methane ratio", "bayesian optimization"],
+    "recommended_actions": [
+      "CH₄ 4~6% × 전력 3.5~4.5 kW 격자 실험 5회 설계 및 Raman FWHM 필수 측정",
+      "Raman 캘리브레이션 완료 후 Trial B-52 실행 큐 트리거",
+      "4H-SiC와 Diamond 기판 스터디를 분리 운영해 공정 창 교차 적용 방지"
+    ]
+  }
+]

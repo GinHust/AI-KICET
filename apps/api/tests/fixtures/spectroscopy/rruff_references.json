@@ -1,0 +1,17 @@
+{
+  "references": [
+    {
+      "material_name": "Graphite",
+      "aliases": ["carbon graphite"],
+      "mode": "raman",
+      "source_id": "rruff-graphite-fixture",
+      "provenance": "RRUFF-style local fixture reference; empirical Raman comparison only",
+      "license_note": "Local fixture for deterministic tests; live RRUFF download is not used.",
+      "warnings": ["Mineral reference coverage may not represent process-grown films."],
+      "peaks": [
+        {"position": 1350.0, "intensity": 0.65, "label": "D"},
+        {"position": 1580.0, "intensity": 1.0, "label": "G"}
+      ]
+    }
+  ]
+}
